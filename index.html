@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seamless Loop Carousel</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            font-family: 'Arial', sans-serif;
+            background-color: #000;
+        }
+
+        .swiper-container {
+            width: 100%;
+            padding-top: 50px;
+            box-sizing: border-box;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .swiper-wrapper {
+            display: flex;
+            align-items: center;
+            transition: transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1); /* Smooth transition */
+        }
+
+        .swiper-slide {
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #7f7fff;
+            width: 70%; /* Adjusted width for better peeking effect */
+            transition: transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1); /* Smooth scale transition */
+        }
+
+        .swiper-slide img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            transition: transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+
+        .swiper-slide-prev, .swiper-slide-next {
+            transform: scale(0.9); /* Scale down the adjacent slides to create depth */
+        }
+
+        .swiper-slide-active {
+            transform: scale(1); /* Scale up the active slide */
+        }
+
+        .swiper-button-next, .swiper-button-prev {
+            color: #fff;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 35px;
+            height: 35px;
+            z-index: 10;
+            transition: color 0.3s ease; /* Smooth color transition */
+        }
+
+        .swiper-button-prev {
+            left: 10px;
+        }
+
+        .swiper-button-next {
+            right: 10px;
+        }
+
+        .swiper-button-next:hover, .swiper-button-prev:hover {
+            color: #ff5722; /* Change color on hover */
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .swiper-slide {
+                width: 75%; /* Adjust the width for smaller screens */
+            }
+
+            .swiper-button-prev, .swiper-button-next {
+                top: 70%;
+                transform: translateY(-50%);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .swiper-slide {
+                width: 75%; /* Adjust the width for mobile screens */
+            }
+
+            .swiper-button-prev, .swiper-button-next {
+                top: 80%;
+                transform: translateY(-50%);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">
+            <img src="https://via.placeholder.com/800x400/ff7f7f/333333?text=Slide+1" alt="Slide 1">
+        </div>
+        <div class="swiper-slide">
+            <img src="https://via.placeholder.com/800x400/7f7fff/333333?text=Slide+2" alt="Slide 2">
+        </div>
+        <div class="swiper-slide">
+            <img src="https://via.placeholder.com/800x400/7fff7f/333333?text=Slide+3" alt="Slide 3">
+        </div>
+        <div class="swiper-slide">
+            <img src="https://via.placeholder.com/800x400/ff7f7f/333333?text=Slide+4" alt="Slide 4">
+        </div>
+    </div>
+
+    <!-- Add Arrows -->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+</div>
+
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script>
+    const swiper = new Swiper('.swiper-container', {
+        loop: true,              // Enable seamless looping of slides
+        centeredSlides: true,    // Center the active slide
+        slidesPerView: 'auto',   // Auto-size the slides
+        spaceBetween: 25,        // Space between the slides
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        effect: 'slide',         // Slide effect
+        speed: 800,              // Transition speed in milliseconds
+        loopedSlides: 4,         // Number of slides to loop for peek effect
+        slideToClickedSlide: true, // Allow clicking on slides to navigate
+        on: {
+            init: function () {
+                const slides = document.querySelectorAll('.swiper-slide');
+                slides.forEach(slide => {
+                    slide.style.transform = 'scale(0.9)'; // Initial scale for all slides except active
+                });
+                const activeSlide = document.querySelector('.swiper-slide-active');
+                activeSlide.style.transform = 'scale(1)'; // Initial scale for the active slide
+            },
+            slideChangeTransitionStart: function () {
+                const slides = document.querySelectorAll('.swiper-slide');
+                slides.forEach(slide => {
+                    slide.style.transform = 'scale(0.9)'; // Reset scale for all slides
+                });
+                const activeSlide = document.querySelector('.swiper-slide-active');
+                activeSlide.style.transform = 'scale(1)'; // Scale up the active slide
+            },
+            loopFix: function () {
+                const activeSlide = document.querySelector('.swiper-slide-active');
+                activeSlide.style.transform = 'scale(1)'; // Ensure the active slide remains scaled up
+            }
+        }
+    });
+</script>
+
+</body>
+</html>

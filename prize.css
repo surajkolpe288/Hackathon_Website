@@ -1,0 +1,173 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
+
+/* Scoped Styles for Insights Section */
+.insights-section * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.insights-section {
+    /* font-family: 'Inter', sans-serif; */
+    background-color: #000000;
+    color: #E5E7EB;
+    padding: 4rem 0;
+}
+
+.insights-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.insights-section h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #60A5FA;
+    margin-bottom: 2rem;
+    text-align: center;
+    text-shadow: 0px 4px 10px rgba(96, 165, 250, 0.5);
+}
+
+.insights-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+    .insights-cards {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.insights-card {
+    background-color: #1E293B;
+    border-radius: 1rem;
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.insights-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(96, 165, 250, 0.7);
+}
+
+.insights-content {
+    width: 60%;
+}
+
+.insights-card h2 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+.insights-card:nth-child(1) h2 {
+    color: #60A5FA;
+}
+
+.insights-card:nth-child(2) h2 {
+    color: #34D399;
+}
+
+.insights-card ul {
+    list-style-type: none;
+}
+
+.insights-card li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.insights-card li svg {
+    width: 2rem;
+    height: 2rem;
+    margin-right: 1rem;
+}
+
+.insights-card p {
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    color: #9CA3AF;
+    font-style: italic;
+}
+
+.insights-illustration {
+    width: 65%;
+    display: flex;
+    justify-content: center;
+}
+
+.insights-illustration img {
+    max-width: 127%;
+    height: auto;
+}
+
+/* --- Specific Adjustments for Both Cards --- */
+
+/* Card 1: Shifting content to the right, moving image down */
+.insights-card:nth-child(1) .insights-content {
+    order: 1; /* Shift content to the right */
+    padding-right: 2rem; /* Add space between content and edge */
+}
+
+.insights-card:nth-child(1) .insights-illustration {
+    order: 2; /* Move image to the left */
+    transform: translateY(30px); /* Move the image down */
+}
+
+/* --- Adding Specific Padding for the Image in Card 1 --- */
+.insights-card:nth-child(1) .insights-illustration img {
+    width: 180%; /* Increase size to 120% of its original */
+    height: auto; /* Ensure the height adjusts proportionally */
+    padding: 0px; /* Adds specific padding around the image */
+}
+
+
+
+
+/* Card 2: Shifting content to the left, moving image up */
+.insights-card:nth-child(2) .insights-content {
+    order: 2; /* Shift content to the left */
+    padding-left: 2rem; /* Add space between content and edge */
+}
+
+.insights-card:nth-child(2) .insights-illustration {
+    order: 1; /* Keep image on the right */
+    transform: translateY(30px); /* Move the image up */
+}
+
+/* --- Adding Specific Padding for the Image in Card 2 --- */
+.insights-card:nth-child(2) .insights-illustration img {
+    width: 180%; /* Increase size to 120% of its original */
+    height: auto; /* Ensure the height adjusts proportionally */
+    padding: 0px; /* Adds specific padding around the image */
+}
+
+/* Join Button Styles */
+.join-btn {
+    display: block;
+    margin: 0 auto;
+    padding: 0.75rem 2rem;
+    background-color: #3B82F6;
+    border: none;
+    border-radius: 5rem;
+    color: #fff;
+    font-size: 1.25rem;
+    cursor: pointer;
+    box-shadow: 0px 4px 20px rgba(59, 130, 246, 0.5);
+    transition: all 0.3s ease;
+}
+
+.join-btn:hover {
+    background-color: #2563EB;
+    transform: translateY(-5px);
+}

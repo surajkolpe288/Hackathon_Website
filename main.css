@@ -1,0 +1,32 @@
+/* styles/main.css */
+body {
+    background: #0a0a0a;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* Position the canvas as the background */
+#particleCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* Ensure it is behind the carousel */
+}
+
+/* Wrap the carousel in a higher z-index container */
+#carousel-wrapper {
+    position: relative;
+    z-index: 2; /* Ensure carousel is above the canvas */
+}
+
+/* Ensure the swiper-container has the correct z-index */
+.swiper-container {
+    z-index: 3; /* This makes sure the slides are above both the canvas and any other content */
+}
+
+/* global css */
